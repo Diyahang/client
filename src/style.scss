@@ -1,0 +1,328 @@
+$lightOrange : #ffefd2;
+$fontH : #002d7a;
+$button : #0043c3;
+
+body{
+    margin:0;
+    .App{
+        display: flex;
+        justify-content: center;
+        .container{
+            width: 1024px;
+
+            .link{
+                text-decoration: none;
+                color: inherit;
+            }
+            // login & register
+            .auth{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+               height:100vh;
+               background-color: $lightOrange;
+            }
+    
+            h1{
+                font-size: 20px;
+                color: $fontH;
+                margin-bottom: 20px;
+            }
+    
+            form{
+                display: flex;
+                flex-direction: column;
+                padding: 50px;
+                background-color: white;
+                width: 200px;
+                gap: 20px;
+                input{
+                    padding: 10px;
+                    border: none;
+                    border-bottom: 1px solid gray;
+                }
+                button{
+                    padding: 10px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: $button;
+                    color: white;
+                }
+                p{
+                    font-size: 12px;
+                    color: red;
+                    text-align: center;
+                }
+    
+                span{
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+    
+    
+        }
+        //navbar
+        .navbar{
+            .container{
+                padding: 10px 0px;
+                display: flex;
+                justify-content: space-between;
+                h1{
+                    font-size: 30px;
+                    font-weight:bolder;
+                    color: $fontH;
+                }
+                .links{
+                    display: flex;
+                    gap: 40px;
+                    align-items: center;
+
+                    h6{
+                        font-size: 16px;
+                        font-weight: 300;
+                    }
+
+                    span{
+                        cursor: pointer;
+                        font-weight: 500;
+                        color: $fontH;
+                    }
+
+                    .write{
+                        background-color: $button;
+                        padding: 10px;
+                        color: white;
+                        border-radius: 6px;
+                       
+
+                        &:hover{
+                            color: $fontH;
+                            background-color: $lightOrange;
+                            border: 1px solid $fontH;
+                            border-radius: 6px;
+                        }
+                    }
+
+                }
+            }
+        }
+        // Footer
+        footer{
+            margin-top: 100px;
+            padding: 10px;
+            background-color: $lightOrange;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            h1{
+                font-size: 20px;
+                font-weight:600;
+                color: $fontH;
+            }
+        }
+
+        // home
+        .home{
+            .posts{
+                margin-top: 50px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: auto;
+                grid-gap: 1rem;
+                // gap: 20px;
+                .post{
+                    display: flex;
+                    border: 1px solid black;
+                    padding: 14px;
+                    min-width: 300px;
+                    line-height: 1.2;
+                    .content{
+                        line-height: 0.5;
+                        h1{
+                            font-size: 18px;
+                            color: $fontH;
+                        }
+                        p{
+                            font-size: 14px;  
+                        }
+                    }
+                    
+                    .job{
+                        font-weight: bolder;
+                    }
+                    button{
+                        width: 300px;
+                        padding: 10px 20px;
+                        border: none;
+                        background-color: $button;
+                        color: white;
+                        cursor: pointer;
+
+                        &:hover{
+                            color: $fontH;
+                            background-color: $lightOrange;
+                            border: 1px solid $fontH;
+                        }
+                    }
+                }
+            }
+        }
+
+        // detail post
+        .detail{
+            display: flex;
+            gap: 50px;
+            .content{
+                flex: 5;
+                .user{
+                    display: flex;
+                    align-items: center;
+                    flex: 5;
+                    gap: 10px;
+                    font-size: 14px;
+                    img{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    .info{
+                        line-height: 0.4;
+                        margin-top: 12px;
+                        span{
+                            font-weight: bolder;
+                        }
+                    }
+                    .edit{
+                        margin-left: 5px;
+                        display: flex;
+                        gap: 5px;
+
+                        img{
+                            width: 20px;
+                            height: 20px;
+                            cursor: pointer;
+                        }
+                    }
+                   
+                }
+                p{
+                    text-align: justify;
+                }
+            }
+            .menu{
+                flex: 2;
+                button{
+                    width: 100px;    
+                    background-color: #ff651e;
+                    padding: 10px;
+                    color: white;
+                    border: 1px solid gray;
+
+                    &:hover{
+                        color: $fontH;
+                        background-color: $lightOrange;
+                        border: 1px solid $fontH;
+                        
+                    }   
+                }     
+            }
+        }
+
+        // write
+        .add{
+            display: flex;
+            gap: 20px;
+            .content{
+                flex:5;
+               .content1{
+                flex:3;
+                display: flex;
+                flex-direction: column;
+                label{
+                    margin-bottom: 4px;
+                    font-weight: bold;
+                }
+                input{
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    border: 1px solid lightgray;
+                }
+                select{
+                    padding: 10px;
+                    border: 1px solid lightgray;
+                }
+               }
+               .content2{
+                flex: 3;
+                .tanggal{
+                    margin-bottom: 12px;
+                    margin-top: 10px;
+                   label{
+                    font-weight: bold;
+                   }
+                    input{
+                        margin-top: 4px;
+                        padding: 10px;
+                        width: 180px;
+                        border: 1px solid lightgray;
+                    }
+                }
+               }
+               .editorContainer{
+                label{
+                    font-weight: bold;
+                }
+                .isi{
+                    height: 250px;
+                    margin-top: 5px;
+                   
+                }
+               }
+            }
+            .menu{
+                flex:2;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .item{
+                    border: 1px solid lightgray;
+                    padding: 12px;
+                    font-size: 14px;
+                    gap: 10px;
+                    height: 170px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    h1{
+                        color: $fontH;
+                        font-size: 24px;
+                    }
+                    .buttons{
+                        display: flex;
+                        justify-content: space-between;
+
+                        :first-child{
+                            cursor: pointer;
+                            color: $fontH;
+                            background-color: white;
+                            border: 1px solid $fontH;
+                            padding: 3px 5px;
+                        }
+                        :last-child{
+                            cursor: pointer;
+                            color: white;
+                            background-color: $fontH;
+                            border: 1px solid gray;
+                            padding: 3px 5px;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
