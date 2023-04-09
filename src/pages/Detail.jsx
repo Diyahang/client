@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import axios from "axios";
 import moment from "moment";
+import DOMPurify from "dompurify";
 
 const Detail = () => {
   const [post, setPost] = useState({});
@@ -44,8 +45,8 @@ const Detail = () => {
             alt=""
           />
           <div className="info">
-            <span>{post.username}</span>
-            <p>Update {moment(post.date).fromNow()}</p>
+            <span>{post?.username}</span>
+            <p>Update {moment(post.created).fromNow()}</p>
           </div>
 
           {currentUser.username === post?.username && (
@@ -57,7 +58,6 @@ const Detail = () => {
             </div>
           )}
         </div>
-
         <h1>{post?.title}</h1>
         <p className="degree">
           Minimal Lulusan : {post?.pendidikan} Pendaftaran:
@@ -69,7 +69,11 @@ const Detail = () => {
         </p>
         <p>Kuota kandidat : {post?.kandidat}</p>
         <p>Job Description : </p>
-        {post?.description}
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post?.description),
+          }}
+        ></p>
       </div>
       <div className="menu">
         {currentUser.username !== post?.username && <button>Apply Now</button>}

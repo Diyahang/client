@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
 
 const Write = () => {
   const getInitialState = () => {
-    const pendidikan = "SMP";
+    const pendidikan = "Pendidikan";
     return pendidikan;
   };
 
@@ -18,9 +18,15 @@ const Write = () => {
     getInitialState,
     state?.pendidikan || ""
   );
-  const [startDate, setStartDate] = useState(state?.startDate || "");
-  const [finishDate, setfinishDate] = useState(state?.finishDate || "");
-  const [value, setValue] = useState(state?.value || "");
+  const [startDate, setStartDate] = useState(
+    state?.startDate.substring(0, 10) || ""
+  );
+  const [finishDate, setfinishDate] = useState(
+    state?.finishDate.substring(0, 10) || ""
+  );
+  const [value, setValue] = useState(state?.description || "");
+
+  const navigate = useNavigate();
 
   const upload = async () => {
     try {
@@ -34,7 +40,7 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    upload();
+    await upload();
 
     try {
       state
@@ -42,19 +48,20 @@ const Write = () => {
             title,
             kandidat,
             pendidikan,
-            startDate: moment(startDate).format("DD MMM YYYY"),
-            finishDate: moment(finishDate).format("DD MMM YYYY"),
+            startDate,
+            finishDate,
             description: value,
           })
-        : await axios.post(`/posts/`, {
+        : await axios.post(`/posts`, {
             title,
             kandidat,
             pendidikan,
-            startDate: moment(startDate).format("DD MMM YYYY"),
-            finishDate: moment(finishDate).format("DD MMM YYYY"),
+            startDate,
+            finishDate,
             description: value,
             created: moment(Date.now()).format(),
           });
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -114,15 +121,15 @@ const Write = () => {
             <br />
             <input
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
               type="date"
+              onChange={(e) => setStartDate(e.target.value)}
               name="data_range_from[]"
             />{" "}
             -{" "}
             <input
               value={finishDate}
-              onChange={(e) => setfinishDate(e.target.value)}
               type="date"
+              onChange={(e) => setfinishDate(e.target.value)}
               name="data_range_to[]"
             />
           </div>
